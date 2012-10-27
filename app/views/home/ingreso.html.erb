@@ -1,0 +1,15 @@
+<h2> <%= image_tag('llave.png') %> Ingreso al Sistema</h2>
+
+<%= form_for :datos, :url => { :action => 'ingresar' } do |f| %>
+
+  <h4> <%= notice %> </h4>
+
+  <pre>
+  <%= f.label 'User ID:' %> <%= f.text_field :login %>
+  <%= f.label 'Clave:  ' %> <%= f.password_field :clave %></pre>
+
+  <%= f.submit 'Ingresar' %> <br /> <br />
+
+<% end %>
+
+<%= link_to image_tag('volver.gif'), home_index_path %>

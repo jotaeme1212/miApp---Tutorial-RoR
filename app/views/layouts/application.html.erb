@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8' />
+  <title>Acceso de Usuarios a Menu</title>
+  <%= stylesheet_link_tag    'blueprint/screen.css' , 'micss' , 'WebGrid' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+
+<div class='container'>
+
+  <div id='cabecera' class='span-24 last'>
+    <div class='span-3'>
+      <div id='cabecera_logo'> <%= image_tag('logo.jpg') %> </div>
+    </div>
+ 
+    <!-- El append-x agrega x columnas vacias (se usa como espaciador) -->
+    <div class='span-15'>
+      <div id='cabecera_titulo'> <h1>Sistema Control de Accesos</h1> </div>
+    </div>
+
+    <div class='span-6 last'>
+      <div id='cabecera_menu'>
+      <ul id='cabecera_menu_items'>
+		  <li><h6> <%= link_to_unless_current 'Pagina Inicio', home_index_path %> </h6></li>
+		  <li><h6> <%= link_to_unless_current 'Acerca De', home_acerca_de_path %> </h6></li>
+      </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div id='centro' class='span-24 last'>
+
+    <!-- Para generar las variables de path, hacer rake routes -->
+    <div class='span-5'>
+	<div id='centro_izquierda'>
+      <h3>Menu Usuario</h3>
+      <%= link_usuario 'Ingreso', home_ingreso_path %>
+      <%= link_anonimo 'Salir', home_salir_path %> <br />
+      <%= link_anonimo 'Cambio Clave', home_cambio_clave_path %> <br /> <br />
+
+      <h3>Menu Sistema</h3>
+      <% cargar_menu %>
+      <% @opciones.each do |opcion| %>
+		<div> <%= mostrar_item_img(opcion) %> <%= mostrar_item(opcion) %> </div>
+	  <% end %>
+	  <br />
+    </div>
+    </div>
+
+    <div class='span-19 last'>
+      <div id='centro_contenido'> <%= yield %> </div>
+    </div>
+
+  </div>
+
+  <div id='pie' class='span-24 last'>
+    <div class='span-17'>
+	  <div id='pie_texto'> <%= ver_info_pie %> <br /> </div>
+    </div>
+
+    <div class='span-7 last'>
+	  <div id='pie_logo'> <%= image_tag('rails2.png') %> </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+
+</html>

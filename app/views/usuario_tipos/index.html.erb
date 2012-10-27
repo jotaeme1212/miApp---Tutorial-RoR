@@ -1,0 +1,26 @@
+<h2><%= link_to image_tag('tipos.png') %> Listado de Tipos de Usuario</h2>
+
+<table class='webgrid'>
+  <tr class='webgrid-header'>
+	<th>ID</th>
+    <th>Nombre</th>
+    <th>Creado</th>
+	<th>Modificado</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @usuario_tipos.each do |registro| %>
+  <tr class='webgrid-row-style'>
+	<td><%= registro.id %></td>
+    <td><%= registro.nombre %></td>
+	<td><%= ver_fecha_df(registro.created_at) %></td>
+    <td><%= ver_fecha_df(registro.updated_at) %></td>
+    <td><%= link_to image_tag('edit.gif'),   edit_usuario_tipo_path(registro) %></td>
+    <td><%= link_to image_tag('delete.gif'), registro, confirm: 'Esta Seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to image_tag('crear.gif'), new_usuario_tipo_path %>
+<%= link_to image_tag('save.gif'), usuario_tipos_txt_path %>

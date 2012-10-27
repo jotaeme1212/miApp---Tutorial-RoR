@@ -1,0 +1,22 @@
+<%= form_for(@menu_usuario_tipo) do |f| %>
+
+  <% if @menu_usuario_tipo.errors.any? %>
+  <div>
+      <h3> <%= image_tag('error.gif') %> El registro no se puede guardar:
+      </h3>
+      
+      <ul>
+        <% @menu_usuario_tipo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+  <% end %>
+
+  <pre>
+  <%= f.label 'Menu:     ' %> <%= f.collection_select(:menu_id, Menu.all, :id, :nombre) %>
+  <%= f.label 'Tipo Usr: ' %> <%= f.collection_select(:usuario_tipo_id, UsuarioTipo.all, :id, :nombre) %></pre>
+
+  <%= f.submit 'Guardar' %> <br /> <br />
+
+<% end %>

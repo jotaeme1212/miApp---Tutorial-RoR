@@ -1,0 +1,30 @@
+<h2><%= link_to image_tag('menu.png') %> Opciones de Menu</h2>
+
+<table class='webgrid'>
+  <tr class='webgrid-header'>
+	<th>ID</th>
+    <th>Nombre</th>
+    <th>Controlador</th>
+    <th>Accion</th>
+    <th>Padre</th>
+    <th>Orden</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @menus.each do |registro| %>
+  <tr class='webgrid-row-style'>
+	<td><%= registro.id %></td>
+    <td><%= registro.nombre %></td>
+    <td><%= registro.controller %></td>
+    <td><%= registro.action %></td>
+    <td><%= registro.padre %></td>
+    <td><%= registro.orden %></td>
+    <td><%= link_to image_tag('edit.gif'), edit_menu_path(registro) %></td>
+    <td><%= link_to image_tag('delete.gif'), registro, confirm: 'Esta Seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<%= link_to image_tag('crear.gif'), new_menu_path %>

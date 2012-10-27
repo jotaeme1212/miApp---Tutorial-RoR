@@ -1,0 +1,16 @@
+<h2> <%= image_tag('llave.png') %> Cambiar Clave</h2>
+
+<%= form_for :datos, :url => { :action => 'cambiar_clave' } do |f| %>
+
+  <h4> <%= notice %> </h4>
+
+  <pre>
+  <%= f.label 'Clave Actual:' %> <%= f.password_field :clave_act %>
+  <%= f.label 'Clave Nueva: ' %> <%= f.password_field :clave_new %>
+  <%= f.label 'Repita Clave:' %> <%= f.password_field :clave_rep %></pre>
+
+  <%= f.submit 'Actualizar' %> <br /> <br />
+
+<% end %>
+
+<%= link_to image_tag('volver.gif'), home_index_path %>

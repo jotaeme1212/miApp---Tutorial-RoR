@@ -1,0 +1,11 @@
+<h3>
+	<%= image_tag('ok.gif') %>
+	<%= notice %>
+</h3>
+
+<p>
+	<b>Acceso:</b>
+	<%= @menu_usuario_tipo.menu.nombre + ' - ' + @menu_usuario_tipo.usuario_tipo.nombre %>
+</p>
+
+<%= link_to image_tag('volver.gif'), menu_usuario_tipos_path %>

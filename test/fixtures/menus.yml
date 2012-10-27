@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  url: MyString
+  controller: MyString
+  action: MyString
+  icono: MyString
+  padre: 1
+  orden: 1
+
+two:
+  nombre: MyString
+  url: MyString
+  controller: MyString
+  action: MyString
+  icono: MyString
+  padre: 1
+  orden: 1

@@ -1,0 +1,14 @@
+<h3 id="notice">
+	<%= image_tag('ok.gif') %>
+	<%= notice %>
+</h3>
+
+<p>
+	<b>Nombre:</b>
+	<%= @menu.nombre %> <br /> <br />
+
+	<b>Accion:</b>
+	<%= @menu.controller + ' => ' + @menu.action %> <br />
+</p>
+
+<%= link_to image_tag('volver.gif'), menus_path %>

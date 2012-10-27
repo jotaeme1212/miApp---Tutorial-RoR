@@ -1,0 +1,11 @@
+<h3>
+	<%= image_tag('ok.gif') %>
+	<%= notice %>
+</h3>
+
+<p>
+	<b>Usuario:</b>
+	<%= @usuario.login + ' (' + @usuario.nombre + ')' %>
+</p>
+
+<%= link_to image_tag('volver.gif'), usuarios_path %>

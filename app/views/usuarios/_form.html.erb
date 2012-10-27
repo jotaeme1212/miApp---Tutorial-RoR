@@ -1,0 +1,25 @@
+<%= form_for(@usuario) do |f| %>
+
+  <% if @usuario.errors.any? %>
+  <div>
+      <h3> <%= image_tag('error.gif') %> El registro no se puede guardar:
+      </h3>
+      
+      <ul>
+        <% @usuario.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+  <% end %>
+
+  <pre>
+  <%= f.label 'Login:       ' %> <%= f.text_field :login %>
+  <%= f.label 'Nombre:      ' %> <%= f.text_field :nombre %>
+  <%= f.label 'e-Mail:      ' %> <%= f.text_field :email %>
+  <%= f.label 'Tipo Usuario:' %> <%= f.collection_select(:usuario_tipo_id, UsuarioTipo.all, :id, :nombre) %>
+  <%= f.label 'Clave:       ' %> <%= f.text_field :clave %></pre>
+
+  <%= f.submit 'Guardar' %> <br /> <br />
+
+<% end %>

@@ -1,0 +1,25 @@
+<h2><%= link_to image_tag('control.png') %> Accesos</h2>
+
+<table class='webgrid'>
+  <tr class='webgrid-header'>
+    <th>Menu</th>
+    <th>Tipo Usuario</th>
+    <th>Creado</th>
+    <th>Modificado</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @menu_usuario_tipos.each do |registro| %>
+  <tr class='webgrid-row-style'>
+	<td><%= registro.menu.nombre %></td>
+	<td><%= registro.usuario_tipo.nombre %></td>
+    <td><%= ver_fecha_df(registro.updated_at) %></td>
+    <td><%= ver_fecha_df(registro.created_at) %></td>
+    <td><%= link_to image_tag('edit.gif'),   edit_menu_usuario_tipo_path(registro) %></td>
+    <td><%= link_to image_tag('delete.gif'), registro, confirm: 'Esta Seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to image_tag('crear.gif'), new_menu_usuario_tipo_path %>

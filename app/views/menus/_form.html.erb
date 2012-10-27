@@ -1,0 +1,39 @@
+<%= form_for(@menu) do |f| %>
+
+  <% if @menu.errors.any? %>
+  <div>
+      <h3> <%= image_tag('error.gif') %> El registro no se puede guardar:
+      </h3>
+      
+      <ul>
+        <% @menu.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+  </div>
+  <% end %>
+
+  <div class='span-11 '>
+  <pre>
+  <%= f.label 'Nombre:     ' %> <%= f.text_field :nombre %>
+  <%= f.label 'Controlador:' %> <%= f.text_field :controller %>
+  <%= f.label 'Accion:     ' %> <%= f.text_field :action %>
+  <%= f.label 'URL:        ' %> <%= f.text_field :url %>
+  <%= f.label 'Icono       ' %> <%= f.text_field :icono %>
+  <%= f.label 'Padre:      ' %> <%= f.number_field :padre %>
+  <%= f.label 'Orden:      ' %> <%= f.number_field :orden %></pre>
+  </div>
+
+  <div class='span-7 last'>
+    <h4>Accesos:</h4>
+    <% for usuario_tipo in UsuarioTipo.find(:all) %>
+	<div>
+      <%= check_box_tag 'menu[usuario_tipo_ids][]', usuario_tipo.id, @menu.usuario_tipos.include?(usuario_tipo) %>
+      <%= usuario_tipo.nombre %>
+    </div>
+	<% end %>
+  </div>
+
+  <div class='span-18 last'> <%= f.submit 'Guardar' %> </div>
+
+<% end %>
